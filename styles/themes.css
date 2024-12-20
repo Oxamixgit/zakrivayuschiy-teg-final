@@ -1,0 +1,53 @@
+/* В этом файле вы опишете значения переменных в разных цветовых схемах.
+Придерживайтесь такого именования классов:
+✦ theme-dark — класс тёмной темы
+✦ theme-light — класс светлой темы
+✦ не забудьте описать стили для изменения темы через медизапрос пользовательских предпочтений
+*/
+:root .theme-dark {
+  --main-font-weight: 785;
+  --accent-font-weight: 465;
+  --main-color: #00cc14;
+  --accent-color: #000000;
+  --name: #00cc14;
+  --hover-color: #00cc14;
+  --sparks: red;
+  --bg-img: url("../images/background-dark.png");
+}
+
+:root .theme-light {
+  --main-font-weight: 700;
+  --accent-font-weight: 400;
+  --main-color: #000000;
+  --accent-color: #ffffff;
+  --name: #000000;
+  --hover-color: #000;
+  --sparks: red;
+  --bg-img: url("../images/background-light.png");
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --main-font-weight: 785;
+    --accent-font-weight: 465;
+    --main-color: #00cc14;
+    --accent-color: #000000;
+    --name: #00cc14;
+    --hover-color: #000;
+    --sparks: red;
+    --bg-img: url("../images/background-dark.png");
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --main-font-weight: 700;
+    --accent-font-weight: 400;
+    --main-color: #000000;
+    --accent-color: #ffffff;
+    --name: #000000;
+    --hover-color: #000;
+    --sparks: red;
+    --bg-img: url("../images/background-light.png");
+  }
+}
