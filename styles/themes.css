@@ -1,0 +1,61 @@
+/* В этом файле вы опишете значения переменных в разных цветовых схемах.
+Придерживайтесь такого именования классов:
+✦ theme-dark — класс тёмной темы
+✦ theme-light — класс светлой темы
+✦ не забудьте описать стили для изменения темы через медизапрос пользовательских предпочтений
+*/
+:root .theme-dark {
+  --main-font-weight: 785;
+  --accent-font-weight: 465;
+  --main-color: #00cc14;
+  --accent-color: #000000;
+  --name: #00cc14;
+  --hover-color: #00cc14;
+  --sparks: red;
+  --main-background: #000;
+  --main-hr-f-background: #007f0c;
+  --main-hr-s-background: #004306;
+}
+
+:root .theme-light {
+  --main-font-weight: 700;
+  --accent-font-weight: 400;
+  --main-color: #000000;
+  --accent-color: #ffffff;
+  --name: #000000;
+  --hover-color: #000;
+  --sparks: red;
+  --main-background: #d3d3d3;
+  --main-hr-f-background: #e7e7e7;
+  --main-hr-s-background: #1a1a1a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --main-font-weight: 785;
+    --accent-font-weight: 465;
+    --main-color: #00cc14;
+    --accent-color: #000000;
+    --name: #00cc14;
+    --hover-color: #000;
+    --sparks: red;
+    --main-background: #000;
+    --main-hr-f-background: #007f0c;
+    --main-hr-s-background: #004306;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --main-font-weight: 700;
+    --accent-font-weight: 400;
+    --main-color: #000000;
+    --accent-color: #ffffff;
+    --name: #000000;
+    --hover-color: #000;
+    --sparks: red;
+    --main-background: #d3d3d3;
+    --main-hr-f-background: #e7e7e7;
+    --main-hr-s-background: #1a1a1a;
+  }
+}
