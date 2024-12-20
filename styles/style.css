@@ -366,11 +366,11 @@ dialog::backdrop {
 }
 
 .brightness {
-  filter: brightness(120%);
+  filter: brightness(150%);
 }
 
 .contrast {
-  filter: contrast(50%);
+  filter: contrast(70%);
 }
 
 .saturate {
@@ -378,7 +378,7 @@ dialog::backdrop {
 }
 
 .sepia {
-  filter: sepia(80%);
+  filter: sepia(100%);
 }
 
 .invert {
