@@ -12,7 +12,9 @@
   --name: #00cc14;
   --hover-color: #00cc14;
   --sparks: red;
-  --bg-img: url("../images/background-dark.png");
+  --main-background: #000;
+  --main-hr-f-background: #007f0c;
+  --main-hr-s-background: #004306;
 }
 
 :root .theme-light {
@@ -23,7 +25,9 @@
   --name: #000000;
   --hover-color: #000;
   --sparks: red;
-  --bg-img: url("../images/background-light.png");
+  --main-background: #d3d3d3;
+  --main-hr-f-background: #e7e7e7;
+  --main-hr-s-background: #1a1a1a;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -35,7 +39,9 @@
     --name: #00cc14;
     --hover-color: #000;
     --sparks: red;
-    --bg-img: url("../images/background-dark.png");
+    --main-background: #000;
+    --main-hr-f-background: #007f0c;
+    --main-hr-s-background: #004306;
   }
 }
 
@@ -48,6 +54,8 @@
     --name: #000000;
     --hover-color: #000;
     --sparks: red;
-    --bg-img: url("../images/background-light.png");
+    --main-background: #d3d3d3;
+    --main-hr-f-background: #e7e7e7;
+    --main-hr-s-background: #1a1a1a;
   }
 }

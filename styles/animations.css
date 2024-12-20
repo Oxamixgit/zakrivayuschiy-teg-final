@@ -13,10 +13,10 @@
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 */
 .card__icon-button:hover .main-body {
-  animation: body-hover 0.3s ease-in forwards;
+  animation: body-hover 0.3s 0.05s ease-in forwards;
 }
 .card__icon-button:hover .core {
-  animation: body-hover 0.3s 0.05s ease-out forwards;
+  animation: body-hover 0.3s ease-out forwards;
 }
 .theme-menu__button:disabled::before {
   content: "▶";
@@ -28,12 +28,12 @@
 }
 .like-icon.is-liked .sparks {
   fill: var(--sparks);
-  animation: spark-flash 0.3s 0.3s ease-in alternate;
+  animation: spark-flash 0.3s 0.3s linear  alternate;
 }
 
 .like-icon.is-liked .heart {
   transform-origin: 50% 50%;
-  animation: scale-heart 0.3s 0.1s ease-in alternate;
+  animation: scale-heart 0.3s 0.1s linear alternate;
 }
 
 @keyframes arrow-slide {

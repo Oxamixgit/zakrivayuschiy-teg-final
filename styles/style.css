@@ -1,19 +1,3 @@
-/* Здесь вы напишете основную часть стилей страницы.
-
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ theme-dark — класс тёмной темы
-✦ theme-light — класс светлой темы
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
-
-Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
-
-*/
-
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
@@ -21,13 +5,27 @@
   font-variation-settings: "wght" var(--main-font-weight);
   color: var(--main-color);
   background: var(--accent-color);
-  background-image: var(--bg-img);
+  background-image: repeating-linear-gradient(
+      to bottom,
+      var(--main-background) 0 2px,
+      transparent 2px 4px
+    ),
+    repeating-linear-gradient(
+      to right,
+      var(--main-background) 0 2px,
+      transparent 2px 4px
+    ),
+    linear-gradient(
+      to bottom,
+      var(--main-hr-f-background) 0 0.01vh,
+      var(--main-hr-s-background)
+    );
   background-attachment: fixed;
   background-repeat: repeat;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
 }
 
 .header {
@@ -42,6 +40,8 @@
 
 .header_logo {
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  display: block;
+  text-align: center;
   margin-block-end: 20px;
 }
 
@@ -75,7 +75,7 @@
   background: transparent;
   text-transform: uppercase;
   color: var(--main-color);
-  transition: opacity 0.3s;
+  transition: opacity 0.3s, width 0.3s;
 }
 
 .layout_whth {
@@ -110,7 +110,6 @@
 }
 .theme-menu__button:focus-visible::after {
   width: 100%;
-  transition: width 0.3s;
 }
 .card {
   color: var(--main-color);
@@ -120,8 +119,34 @@
   inline-size: clamp(23.4375rem, 16.2852rem + 30.5164vw, 43.75rem);
 }
 
+.card + .card {
+  margin-block-start: 50px;
+}
+
+.card_container {
+  position: relative;
+}
+
 .card_img {
+  z-index: -1;
   width: 100%;
+}
+
+.img_text {
+  display: inline-block;
+  font-family: var(--accent-font-family), "fantasy";
+  font-size: 14px;
+  position: absolute;
+  opacity: 0.5;
+  color: var(--main-color);
+  top: 25px;
+  right: 25px;
+  z-index: 1;
+  mix-blend-mode: hard-light;
+  text-shadow: 0 1px 0 var(--main-background), 1px 0 0 var(--main-background),
+    0 -1px 0 var(--main-background), -1px 0 0 var(--main-background),
+    1px 1px 0 var(--main-background), 1px -1px 0 var(--main-background),
+    -1px 1px 0 var(--main-background), -1px -1px 0 var(--main-background);
 }
 
 .card__title {
@@ -164,20 +189,6 @@
   padding: 0;
 }
 
-.card__like-button:focus-visible::after {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 2px;
-  width: 0%;
-  margin-bottom: -2px;
-  background: var(--main-color);
-  opacity: 0.6;
-  animation: focus 0.3s linear forwards;
-}
-
 .button__text {
   font-family: var(--accent-font-family), "fantasy";
   font-size: 14px;
@@ -208,7 +219,12 @@
   z-index: 1;
 }
 
-.card__like-save:focus {
+.card__like-save:focus,
+.card__icon-button:focus .like-icon:focus {
+  outline: none;
+}
+
+.card__like-save:focus-visible {
   box-shadow: 2px 2px 0 var(--main-color);
   transition: box-shadow 0.3s;
 }
@@ -219,25 +235,20 @@
 }
 .card__icon-button:active .core {
   fill: var(--sparks);
-  transition: fill 0.3s 0.05s ease-out;
+  transition: fill 0.3s ease-out;
 }
 
 .like-icon {
   border: none;
   background: transparent;
 }
-.like-icon:focus,
+
 .like-icon:focus-visible {
   outline: none;
   padding: 5.5px;
   border: 2px solid var(--main-color);
 }
 
-.like-icon.is-liked .main-body,
-.like-icon.is-liked .core {
-  fill: var(--sparks);
-  transition: fill 0.3s 0.05s ease-out;
-}
 .like-icon.is-liked .contour {
   fill: var(--sparks);
   transition: fill 0.3s 0.06s ease-out;
@@ -248,7 +259,7 @@
 }
 .like-icon.is-liked .core {
   fill: var(--sparks);
-  transition: fill 0.3s 0.06s ease-out;
+  transition: fill 0.3s ease-out;
 }
 
 .sparks {
@@ -263,9 +274,6 @@
   background-color: transparent;
 }
 
-.card__icon-button:focus {
-  outline: none;
-}
 .card__icon-button:focus-visible {
   outline: none;
   border: 2px solid var(--main-color);
@@ -298,10 +306,116 @@
   transition: fill 0.3s;
 }
 
+.dialog {
+  inline-size: clamp(21.3125rem, 21.0625rem + 1.1111vw, 22.0625rem);
+}
+
+.dialog[open] {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 30px;
+  border: 2px solid var(--main-color);
+}
+
+.dialog_title {
+  font-family: var(--accent-font-family), "fantasy";
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.dialog svg {
+  min-inline-size: 39px;
+}
+
+.dialog_title-text {
+  display: inline-block;
+  text-transform: uppercase;
+  line-height: 21px;
+}
+
+dialog::backdrop {
+  background-color: rgb(0 0 0 / 0.75);
+  backdrop-filter: brightness(75%);
+}
+
+.dialof_form {
+  inline-size: -webkit-fill-available;
+}
+
+.dialog_btn {
+  font-family: var(--accent-font-family), "fantasy";
+  font-size: 14px;
+  padding-block: 15px;
+  cursor: pointer;
+  color: var(--main-color);
+  background: var(--accent-color);
+  border: 2px solid var(--main-color);
+  position: relative;
+  z-index: 0;
+  width: 100%;
+}
+
+.dialog_btn:focus {
+  outline: none;
+}
+
+.brightness {
+  filter: brightness(120%);
+}
+
+.contrast {
+  filter: contrast(50%);
+}
+
+.saturate {
+  filter: saturate(300%);
+}
+
+.sepia {
+  filter: sepia(80%);
+}
+
+.invert {
+  filter: invert(0.8);
+}
+
+.hue-rotate {
+  filter: hue-rotate(90deg) saturate(150%) sepia(80%);
+}
+.grayscale {
+  filter: grayscale(0.7);
+}
+
+.blur {
+  filter: blur(0.2rem);
+}
+
 @media (width <= 375px) {
   .card_save-button {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+}
+
+@supports (mix-blend-mode: hard-light) {
+  .img_text {
+    mix-blend-mode: hard-light;
+  }
+}
+@supports (
+  (text-stroke: 1px var(--main-background)) or
+    (-webkit-text-stroke: 1px var(--main-background))
+) {
+  .img_text {
+    -webkit-text-stroke: 1px var(--main-background);
+    text-stroke: 1px var(--main-background);
+    text-shadow: none;
   }
 }
